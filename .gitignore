@@ -164,3 +164,5 @@ debug.csv
 src/autok.py
 debug_comparisons.py
 verbose/
+paper_ex.py
+testing/

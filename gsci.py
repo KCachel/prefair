@@ -5,6 +5,7 @@ import pandas as pd
 import FairRankTune as frt
 import pycountry_convert as pc
 from experiment_core import *
+from config_abl import *
 #Script for global sustainability competetive index
 
 # Quick helper function to convert a country to its continent
@@ -116,3 +117,7 @@ csv_name = 'results/global-sci/results_prop_rep.csv'
 epira_bnd = .85 #highest observed exposure according to method
 workflow(profile_df, dataset_df, candidates_col, sa_col, fair_rep, rank_fairness, k_cnt,
              profile_item_group_dict, candidate_ids, dataset_name, csv_name, epira_bnd)
+
+prefair_akt, random_akt = config_study(profile_df, dataset_df, candidates_col, sa_col, pd.concat(rank_store,  axis = 1))
+print("prefair average KT: ", prefair_akt)
+print("random average KT: ", random_akt)

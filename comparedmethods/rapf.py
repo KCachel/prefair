@@ -3,6 +3,9 @@ import pandas as pd
 import networkx as nx
 import random
 import math
+sd = 123
+random.seed(sd)
+np.random.seed(sd)
 #References: https://github.com/MouinulIslamNJIT/Rank-Aggregation_Proportionate_Fairness/blob/main/AlgRAPF.py
 
 def RAPF(profile_df, profile_item_group_dict, k_cnt, seed):
@@ -57,7 +60,7 @@ def RAPF(profile_df, profile_item_group_dict, k_cnt, seed):
             r2 = numberOfItem
         rankRange[item] = (r1, r2)
 
-    B = nx.Graph()
+    B = nx.Graph(seed = seed)
     top_nodes = []
     bottom_nodes = []
 

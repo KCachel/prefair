@@ -3,6 +3,7 @@ from comparedmethods import *
 import numpy as np
 import pandas as pd
 from experiment_core import *
+from config_abl import *
 #Script for world happiness dataset
 
 # Dataset Preparation
@@ -74,3 +75,7 @@ csv_name = 'results/econ-freedom/results_prop_rep.csv'
 epira_bnd = .70 #highest observed exposure according to method
 workflow(profile_df, dataset_df, candidates_col, sa_col, fair_rep, rank_fairness, k_cnt,
              profile_item_group_dict, candidate_ids, dataset_name, csv_name, epira_bnd)
+
+prefair_akt, random_akt = config_study(profile_df, dataset_df, candidates_col, sa_col, pd.concat(rank_store,  axis = 1))
+print("prefair average KT: ", prefair_akt)
+print("random average KT: ", random_akt)

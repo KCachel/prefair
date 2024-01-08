@@ -98,7 +98,7 @@ def group_aware_single_transferable_vote(preference_df, item_group_dict, group_c
                 # remove all group members from considered_candidates to help get next preferences
                 for c in group_considered_candidates[group_elim]:
                     considered_candidates.remove(c)
-            #Elimante each group and transfer their surplus
+            #Eliminate each group and transfer their surplus
             for group_elim in elim_grps:
                 vote_dict, considered_candidates, preference_df, group_considered_candidates = eliminate_group(vote_dict,
                                 considered_candidates, preference_df, group_considered_candidates,
@@ -190,7 +190,8 @@ def eliminate_group(vote_dict, considered_candidates, preference_df, group_consi
 
             # Distribute the surplus
             for next_cand, pref_weight in zip(next_cands, pref_num):
-                vote_dict[next_cand] = votes_trans_from_c / pref_weight
+                #vote_dict[next_cand] = votes_trans_from_c / pref_weight
+                vote_dict[next_cand] += votes_trans_from_c / np.sum(pref_num) * pref_weight
     del group_considered_candidates[group_elim]
     return vote_dict, considered_candidates, preference_df, group_considered_candidates
 
@@ -218,7 +219,8 @@ def _transfer_surplus(vote_dict, considered_candidates, seats, preference_df, qu
         del vote_dict[cand]
         #Distribute the surplus
         for next_cand, pref_weight in zip(next_cands, pref_num):
-            vote_dict[next_cand] = surplus/pref_weight
+            #vote_dict[next_cand] = surplus / pref_weight
+            vote_dict[next_cand] += surplus/np.sum(pref_num)*pref_weight
 
 
     return vote_dict, considered_candidates, seats, preference_df, quota, candidates_elected
@@ -302,7 +304,9 @@ def _elimination(vote_dict, considered_candidates, seats, preference_df, candida
 
         # Distribute the surplus
         for next_cand, pref_weight in zip(next_cands, pref_num):
-            vote_dict[next_cand] = votes_transfereed_from_c / pref_weight
+            #vote_dict[next_cand] = votes_transfereed_from_c / pref_weight
+            vote_dict[next_cand] += votes_transfereed_from_c / np.sum(pref_num) * pref_weight
+
 
     return vote_dict, considered_candidates
 

@@ -125,7 +125,8 @@ def _transfer_surplus(vote_dict, considered_candidates, seats, preference_df, qu
         del vote_dict[cand]
         # Distribute the surplus
         for next_cand, pref_weight in zip(next_cands, pref_num):
-            vote_dict[next_cand] = surplus / pref_weight
+            #vote_dict[next_cand] = surplus / pref_weight
+            vote_dict[next_cand] += surplus/np.sum(pref_num)*pref_weight
 
     return vote_dict, considered_candidates, seats, preference_df, quota, candidates_elected
 
@@ -196,7 +197,8 @@ def _elimination(vote_dict, considered_candidates, seats, preference_df, quota, 
 
         # Distribute the surplus
         for next_cand, pref_weight in zip(next_cands, pref_num):
-            vote_dict[next_cand] = votes_transfereed_from_c / pref_weight
+            #vote_dict[next_cand] = votes_transfereed_from_c / pref_weight
+            vote_dict[next_cand] += votes_transfereed_from_c / np.sum(pref_num) * pref_weight
 
     return vote_dict, considered_candidates
 

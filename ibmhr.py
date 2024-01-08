@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from experiment_core import *
-
+from config_abl import *
 
 # Dataset Preparation
 #1. We have to create a preference profile
@@ -52,13 +52,6 @@ unique_employees = list(np.unique(np_profile))
 print("There are ", len(unique_employees), " candidates in the preference profile.")
 
 
-# Gender
-# np_profile = ibm_hr_profile_df.to_numpy()
-# unique_employees = list(np.unique(np_profile))
-# employee_gender = [ibmhr.loc[ibmhr['EmployeeNumber'] == emp]['Gender'].item() for emp in unique_employees]
-# profile_item_group_dict = dict(zip(unique_employees, employee_gender))
-
-
 
 profile_df = ibm_hr_profile_df
 dataset_df = ibmhr
@@ -85,3 +78,9 @@ csv_name = 'results/ibmhr/results_prop_rep.csv'
 epira_bnd = .9 #seems to be limit in this data
 workflow(profile_df, dataset_df, candidates_col, sa_col, fair_rep, rank_fairness, k_cnt,
              profile_item_group_dict, candidate_ids, dataset_name, csv_name, epira_bnd)
+
+prefair_akt, random_akt = config_study(profile_df, dataset_df, candidates_col, sa_col,
+                                       pd.concat([yearsatcompany_emprank, yearscurrentrole_emprank,
+                                                  yearslastpromo_emprank, yearscurrman_emprank],  axis = 1))
+print("prefair average KT: ", prefair_akt)
+print("random average KT: ", random_akt)
