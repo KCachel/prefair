@@ -2,7 +2,7 @@ import os
 os.environ["OMP_NUM_THREADS"] = '1' #For Kmeans on windows comment if not applicable
 import pandas as pd
 import sklearn.cluster
-
+#To use a different distance function change the below
 def _imputate_candidates(profile_df, dataset_df, candidates_col):
     """
     Impute candidates in a partial preference profile
