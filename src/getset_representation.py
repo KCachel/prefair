@@ -19,7 +19,7 @@ def get_representation(profile_df, dataset_df, candidates_col, sa_col):
     pool_group_cnt_dict = dict(map(lambda i, j: (i, j), groups, count_per_group))
 
     # SA data for candidates in the profile
-    unique_ranked_candidates = list(np.unique(profile_df))
+    unique_ranked_candidates = list(np.unique(profile_df.dropna()))
     sa_ranked = [dataset_df.loc[dataset_df[candidates_col] == c][sa_col].item() for c in unique_ranked_candidates]
     groups_ranked, count_per_ranked_group = np.unique(sa_ranked, return_counts=True)
     ranked_item_group_dict = dict(zip(unique_ranked_candidates, sa_ranked))
