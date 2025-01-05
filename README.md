@@ -1,9 +1,9 @@
 # Pre-FAIR: Combining Partial Preferences for Fair Consensus Decision-making
 
 
-Code and data for "Pre-FAIR: Combining Partial Preferences for Fair Consensus Decision-making". To reproduce
+Code and data for "Pre-FAIR: Combining Partial Preferences for Fair Consensus Decision-making" published at ACM Conference on Fairness, Accountability, and Transparency (ACM FAccT 2024). To reproduce
 the experiments run `wh.py` (world happiness data), `econf.py` (economic freedom data), `gsci.py` (gsci data),
-`ibmhr.py` (ibmhr data), and `synthetic_study.py` (partially synthetic ACMEMP and Mallows profiles - note the code to
+`ibmhr.py` (ibmhr data), and `synthetic_study.py` (partially synthetic ACMEMP-Mallows profiles - note the code to
 generate the Mallows profiles themselves are in `data\synthetic-study\generate_mallows.R`). Next to produce the plots
 used in the paper run the script `plotting.R` in the `results/` folder.
 

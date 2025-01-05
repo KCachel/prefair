@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+#References: https://github.com/kalyaniuniversity/MC4/blob/master/mc4/algorithm.py
 np.set_printoptions(formatter={'float': lambda x: "{0:0.6f}".format(x)})
 
 
