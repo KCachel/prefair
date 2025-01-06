@@ -273,7 +273,7 @@ def _elimination(vote_dict, considered_candidates, seats, preference_df, candida
     possible_candidates = np.array(list(vote_dict.keys()))
     possible_votes = list(vote_dict.values())
     lowest_vote_cands = possible_candidates[list(possible_votes == np.min(possible_votes))]
-    min_score = np.Inf
+    min_score = np.inf
     eliminate_c = None
     for c in lowest_vote_cands:
         group_c = item_group_dict[c]

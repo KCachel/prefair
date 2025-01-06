@@ -156,7 +156,7 @@ def extract_ranks(matrix, item_key):
     for i in range(len(item_key)):
         max_indx = np.argmax(state_matrix)
         ranking.append(item_names[item_indexers.index(max_indx)])
-        state_matrix[max_indx] = -np.Inf
+        state_matrix[max_indx] = -np.inf
 
     return np.asarray(ranking)
 

@@ -81,8 +81,8 @@ def epiRA(consensus, item_group_dict, bnd, grporder):
        boost = (grp_min_size*max_avg_exp*bnd) - exp_grp_min_without_highest
 
        exp = np.copy(exp_at_position) #deep copy
-       exp[np.argwhere(current_group_ids == grp_min_avg_exp).flatten()] = np.Inf
-       exp[indx_highest_grp_min_item] = np.Inf #added 11/21
+       exp[np.argwhere(current_group_ids == grp_min_avg_exp).flatten()] = np.inf
+       exp[indx_highest_grp_min_item] = np.inf #added 11/21
        indx = (np.abs(exp - boost)).argmin() #find position with closest exposure to boost
        if swapped[indx] == True: #swapping same item
            while(swapped[indx] != False):

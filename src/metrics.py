@@ -30,7 +30,7 @@ def full_sat_index(profile_df, profile_percentage, consensus_df):
         if len(indxs) > 0:
             sats.append(np.max(indxs))
         else:
-            return np.Inf
+            return np.inf
     return (np.max(sats)+1)/len(consensus)
 
 
