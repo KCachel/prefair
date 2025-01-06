@@ -15,6 +15,7 @@ def _imputate_candidates(profile_df, dataset_df, candidates_col):
     #For every ranking:
     num_unique_rankings = len(profile_df.columns)
 
+    profile_df = profile_df.dropna() #handle top-k where voters have different k
     for r in range(0, num_unique_rankings):
         single_ranking = pd.DataFrame(profile_df.iloc[:, r])  # isolate ranking
         candidates_ranked = list(single_ranking.to_numpy().flatten())
